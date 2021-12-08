@@ -4,7 +4,11 @@ import matplotlib.pyplot as plt
 import xlrd
 
 
-def data_process_csv(file_name):
+def data_process_hook(a_data):
+    return a_data
+
+
+def data_process_csv(file_name, data_process_hook=None):
     """
     onDemand process csv data
     """
@@ -29,8 +33,8 @@ def data_process_csv(file_name):
                 continue
             else:
                 # Process 2nd ....  column
-                exampleData[line_num][column_num] = float(exampleData[
-                    line_num][column_num]) / 82.0 / 5
+                pre_data = exampleData[line_num][column_num]
+                exampleData[line_num][column_num] = data_process_hook(pre_data)
     # Write data to new CSV file
     with open(new_filename + "_post.csv", 'w', newline='') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar=' ')
@@ -38,7 +42,7 @@ def data_process_csv(file_name):
             spamwriter.writerow(exampleData[line_num])
 
 
-def data_process_excel(file_name):
+def data_process_excel(file_name, data_process_hook=None):
     """
     onDemand process excel data
     """
@@ -64,15 +68,11 @@ def data_process_excel(file_name):
             # Process data from 2nd line
             one_line = []
             for column_num in range(length_column):
+                pre_data = exampleData[line_num][column_num]
                 if column_num == 0:
-                    one_line.append(sheet1.row(line_num)[column_num].value)
-                    # continue
-                # elif column_num in [1, 3]:
-                #     one_line.append(float(sheet1.row(line_num)[
-                #                     column_num].value) / 36.0 / 5)
+                    one_line.append(pre_data)
                 else:
-                    one_line.append(float(sheet1.row(line_num)[
-                                    column_num].value) / 52.0 / 5)
+                    one_line.append(data_process_hook(pre_data))
             spamwriter.writerow(one_line)
 
 
@@ -139,3 +139,4 @@ for csv_file in [
         'eBPF_retransmit_Ratio_Wan_Down_UP_Asym.xls'
 ]:
     data_process_excel(csv_file)
+
