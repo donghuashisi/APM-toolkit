@@ -1,0 +1,143 @@
+# sudo /home/tester/v2.83/t-rex-64 -f /home/tester/sish_file/trex_file/test.yaml -c 4 -m 1 -d 10
+- duration : 1.0
+  generator :
+          distribution : "seq"
+          clients_start : "16.0.0.1"
+          clients_end   : "16.0.0.255"
+          # servers_start : "48.0.0.1"
+          # servers_end   : "48.0.0.255"
+          clients_per_gb : 201
+          min_clients    : 101
+          dual_port_mask : "1.0.0.0"
+          tcp_aging      : 0
+          udp_aging      : 0
+          generator_clients :
+            - name : "c1"
+              distribution: "seq"
+              ip_start: "16.0.0.1"
+              ip_end: "16.0.0.100"
+            - name : "c2"
+              distribution: "seq"
+              ip_start: "17.0.0.1"
+              ip_end: "17.0.0.100"
+          generator_servers:
+            - name: "s1"
+              distribution: "seq"
+              ip_start: "48.0.0.1"
+              ip_end: "48.0.0.100"
+            - name: "s2"
+              distribution: "seq"
+              ip_start: "49.0.0.1"
+              ip_end: "49.0.0.100"
+
+  mac        : [0x00,0x00,0x00,0x01,0x00,0x00]
+  # cap_ipg    : true
+  # cap_ipg    : true
+  # cap_ipg_min    : 30 
+  # cap_override_ipg    : 200
+  mac_override_by_ip : true
+  cap_info :
+     # - name: /home/tester/sish_file/trex_file/cisco-my.sharepoint.com_13.107.136.9.pcap
+     #   # cap_ipg    : true
+     #   cps : 1.0
+     #   ipg : 40000
+     #   rtt : 40000
+     #   w   : 1
+     #   server_addr : "48.0.0.7"
+     #   # client_addr: "10.140.36.26"
+     #   one_app_server : true
+     #   multi_flow_enabled: true
+     #   flows_dirs: [0, 1]
+     #   keep_src_port: true
+     # - name: /home/tester/sish_file/trex_file/www.office.com_13.107.9.156.pcap
+     #   # cap_ipg    : true
+     #   cps : 1.0
+     #   ipg : 40000
+     #   rtt : 40000
+     #   w   : 1
+     #   server_addr : "78.0.0.7"
+     #   # client_addr: "10.140.36.26"
+     #   one_app_server : true
+     #   multi_flow_enabled: true
+     #   flows_dirs: [0, 3]
+     #   keep_src_port: true
+     # - name: /home/tester/sish_file/trex_file/delay_10_http_browsing_0.pcap
+     #   cps : 1.0
+     #   ipg : 20000
+     #   rtt : 20000
+     #   w   : 1
+     #   server_addr : "13.107.136.9"
+     #   one_app_server : true
+     #   multi_flow_enabled: true
+     #   flows_dirs: [0, 1]
+     #   keep_src_port: true
+     # - name: /home/tester/sish_file/trex_file/tcp_www.office.com.10.140.36.26:13.107.9.156:50090:443:29.pcap
+     #   cps : 10.0
+     #   ipg : 20000
+     #   rtt : 20000
+     #   w   : 1
+     #   server_addr : "48.0.0.200"
+     #   one_app_server : true
+     #   multi_flow_enabled: true
+     #   flows_dirs: [0, 1]
+     #   # keep_src_port: true
+     #   clients_start : "16.0.0.1"
+     #   clients_end   : "16.0.0.100"
+     #   # ips: 2
+     # - name: /home/tester/sish_file/trex_file/tcp_www.office.com.10.140.36.26:13.107.9.156:50090:443:29.pcap
+     #   cps : 10.0
+     #   ipg : 20000
+     #   rtt : 20000
+     #   w   : 1
+     #   server_addr : "16.0.0.200"
+     #   one_app_server : true
+     #   multi_flow_enabled: true
+     #   flows_dirs: [1, 0]
+     #   # keep_src_port: true
+     #   clients_start : "48.0.0.1"
+     #   clients_end   : "48.0.0.100"
+     #   # ips: 2
+     - name: /home/tester/sish_file/trex_file/delay_10_http_browsing_0.pcap
+       cps : 10.0
+       ipg : 20000
+       rtt : 20000
+       w   : 1
+       # server_addr : "48.0.0.200"
+       # one_app_server : true
+       multi_flow_enabled: true
+       flows_dirs: [0, 1]
+       client_pool: "c1"
+       server_pool: "s1"
+
+     - name: /home/tester/sish_file/trex_file/delay_10_http_browsing_0.pcap
+       cps : 10.0
+       ipg : 20000
+       rtt : 20000
+       w   : 1
+       # server_addr : "48.0.0.200"
+       # one_app_server : true
+       multi_flow_enabled: true
+       flows_dirs: [0, 1]
+       client_pool: "c2"
+       server_pool: "s2"
+       # keep_src_port: true
+       # clients_start : "16.0.0.1"
+       # clients_end   : "16.0.0.100"
+       # clients_per_gb : 201
+       # min_clients    : 101
+       # ips: 2
+     # - name: /home/tester/sish_file/trex_file/delay_10_http_browsing_0.pcap
+     #   cps : 10.0
+     #   ipg : 20000
+     #   rtt : 20000
+     #   w   : 1
+     #   server_addr : "16.0.0.200"
+     #   one_app_server : true
+     #   multi_flow_enabled: true
+     #   flows_dirs: [1, 0]
+     #   # keep_src_port: true
+     #   clients_start : "48.0.0.1"
+     #   clients_end   : "48.0.0.100"
+     #   clients_per_gb : 201
+     #   min_clients    : 101
+     #   # ips: 2
