@@ -4,6 +4,7 @@ import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
 import multiprocessing
+import os
 
 ######################################
 ##### Parameters you can modify ######
@@ -17,6 +18,54 @@ failed_connect = 0
 done_connect = 0
 
 server_max_cocurrent_thread = 100
+
+#sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mycert.key -out mycert.pem
+#######
+# from OpenSSL import crypto, SSL
+
+
+# def cert_gen(
+#         emailAddress="emailAddress",
+#         commonName="commonName",
+#         countryName="NT",
+#         localityName="localityName",
+#         stateOrProvinceName="stateOrProvinceName",
+#         organizationName="organizationName",
+#         organizationUnitName="organizationUnitName",
+#         serialNumber=0,
+#         validityStartInSeconds=0,
+#         validityEndInSeconds=10 * 365 * 24 * 60 * 60,
+#         KEY_FILE="private.key",
+#         CERT_FILE="selfsigned.crt"):
+#     # can look at generated file using openssl:
+#     # openssl x509 -inform pem -in selfsigned.crt -noout -text
+#     # create a key pair
+#     k = crypto.PKey()
+#     k.generate_key(crypto.TYPE_RSA, 4096)
+#     # create a self-signed cert
+#     cert = crypto.X509()
+#     cert.get_subject().C = countryName
+#     cert.get_subject().ST = stateOrProvinceName
+#     cert.get_subject().L = localityName
+#     cert.get_subject().O = organizationName
+#     cert.get_subject().OU = organizationUnitName
+#     cert.get_subject().CN = commonName
+#     cert.get_subject().emailAddress = emailAddress
+#     cert.set_serial_number(serialNumber)
+#     cert.gmtime_adj_notBefore(0)
+#     cert.gmtime_adj_notAfter(validityEndInSeconds)
+#     cert.set_issuer(cert.get_subject())
+#     cert.set_pubkey(k)
+#     cert.sign(k, 'sha512')
+#     with open(CERT_FILE, "wt") as f:
+#         f.write(crypto.dump_certificate(
+#             crypto.FILETYPE_PEM, cert).decode("utf-8"))
+#     with open(KEY_FILE, "wt") as f:
+#         f.write(crypto.dump_privatekey(crypto.FILETYPE_PEM, k).decode("utf-8"))
+
+# cert_gen()
+
+
 ########## client #######
 
 
@@ -40,11 +89,10 @@ class Client(threading.Thread):
             ###Wrap tcp with SSL ###
             ########################
             context = ssl.create_default_context()
-            context.load_verify_locations(
-                "/root/devtest_micro-service/sish_root_ca/mycert.pem")
+            context.load_verify_locations(server_cert)
             sock = context.wrap_socket(sock,
                                        # cert_reqs=ssl.CERT_REQUIRED,
-                                       server_hostname="www.cisco_test.com")
+                                       server_hostname=server_hostname)
         sock.connect((host, port))
 
         ########################
@@ -201,8 +249,7 @@ def server_multi_thread_main(host, port):
 def server_multi_ssl_thread_main(host, port):
     total_connections = 0
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-    context.load_cert_chain('/root/devtest_micro-service/sish_root_ca/mycert.pem',
-                            '/root/devtest_micro-service/sish_root_ca/mycert.key')
+    context.load_cert_chain(server_cert, server_key)
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0) as sock:
         sock.bind((host, port))
         sock.listen(server_max_cocurrent_thread)
@@ -264,11 +311,21 @@ if __name__ == "__main__":
         "--client_concur", help="client concurrent connectoins", default=10
     )
 
+    parser.add_argument(
+        "--server_name", help="client concurrent connectoins", default='office'
+    )
+
     args = parser.parse_args()
 
     role = args.role
     port = int(args.server_port)
     host = args.server_ip
+    server_name = args.server_name
+    server_hostname = 'www.' + server_name + '.com'
+
+    file_path = os.path.dirname(os.path.abspath(__file__))
+    server_cert = file_path + '/ca_files/mycert_' + server_name + '.pem'
+    server_key = file_path + '/ca_files/mycert_' + server_name + '.key'
 
     if args.ssl:
         ssl_enable = True
@@ -289,7 +346,8 @@ if __name__ == "__main__":
     server_data_len = len(client_send_message)
     client_data_len = len(server_send_message)
 
-    print("{} {} {} ssl_enable:{}".format(role, host, port, ssl_enable))
+    print("{} {} {} ssl_enable:{} {}".format(
+        role, host, port, ssl_enable, server_hostname))
     if role == 'client':
         if one_client == True:
             client = Client(host, port, ssl_enable)
