@@ -1,0 +1,42 @@
+# sudo /home/tester/v2.83/t-rex-64 -f /home/tester/sish_file/trex_file/nwpi_tls.yaml -c 4 -m 1 -d 1 --etc /home/tester/sish_file/trex_file
+- duration : 1.0
+  generator :
+          distribution : "seq"
+          clients_start : "16.0.0.1"
+          clients_end   : "16.0.0.255"
+          # servers_start : "48.0.0.1"
+          # servers_end   : "48.0.0.255"
+          clients_per_gb : 201
+          min_clients    : 101
+          dual_port_mask : "1.0.0.0"
+          tcp_aging      : 0
+          udp_aging      : 0
+  mac        : [0x00,0x00,0x00,0x01,0x00,0x00]
+  # cap_ipg    : true
+  # cap_ipg    : true
+  # cap_ipg_min    : 30 
+  # cap_override_ipg    : 200
+  mac_override_by_ip : true
+  cap_info :
+     - name: /home/tester/sish_file/trex_file/TLSv3_office.pcap
+       # cap_ipg    : true
+       cps : 1
+       ipg : 40000
+       rtt : 40000
+       w   : 1
+       server_addr : "48.0.0.7"
+       # client_addr: "10.140.36.26"
+       one_app_server : true
+       multi_flow_enabled: true
+       flows_dirs: [0, 1]
+       keep_src_port: true
+     # - name: /home/tester/sish_file/trex_file/TLSv3_office.pcap
+     #   cps : 1
+     #   ipg : 20000
+     #   rtt : 20000
+     #   w   : 1
+     #   server_addr : "48.0.0.8"
+     #   one_app_server : true
+     #   multi_flow_enabled: true
+     #   flows_dirs: [0, 1]
+     #   keep_src_port: true

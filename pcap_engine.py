@@ -17,13 +17,13 @@ def get_pcap_list(pcap_dir):
 
 
 def func1():
-    dir_location = "/root/temp/"
-    dir_location2 = "/root/temp"
-    origin_pcap_file = '/root/sish.pcap'
-    origin_pcap_file = '/root/dev_test_common_service/saas.pcap'
+    dir_location = "/Users/sish/Desktop/APM-toolkit/sish/"
+    # dir_location2 = "/root/temp"
+    # origin_pcap_file = '/root/sish.pcap'
+    origin_pcap_file = './1.pcap'
 
-    shutil.rmtree(dir_location2)
-    os.makedirs(dir_location2)
+    # shutil.rmtree(dir_location)
+    # os.makedirs(dir_location)
 
     ps = PcapSplitter(origin_pcap_file)
     ps.split_by_session(dir_location)
@@ -161,8 +161,12 @@ def flow_parse(dir_location, one_pcap):
 
         elif scapy_cap[0][IP].proto == 6:
             # TCP session
+            # import pdb
+            # pdb.set_trace()
             sport = scapy_cap[0][IP][TCP].sport
             dport = scapy_cap[0][IP][TCP].dport
+            # import pdb
+            # pdb.set_trace()
 
             session_info = str(src) + ':' + str(dst) + ':' + \
                 str(sport) + ':' + str(dport) + ':' + str(pkt_num) + "."
@@ -198,14 +202,50 @@ def flow_parse(dir_location, one_pcap):
         os.rename(dir_location + one_pcap, dir_location +
                   post_name + 'pcap')
 
+def art_measure(dir_location):
+    pcap_list = get_pcap_list(dir_location)
+    server_dst={}
+    for one_pcap in pcap_list:
+        scapy_cap = rdpcap(dir_location + one_pcap)
+        try:
+            if scapy_cap[0][IP].proto == 6:
+                if scapy_cap[0]['TCP'].flags.value == 2 and scapy_cap[1]['TCP'].flags.value == 18 and scapy_cap[2]['TCP'].flags.value == 16:
+                    sip = scapy_cap[0][IP].src
+                    dip = scapy_cap[0][IP].dst
+                    sport = scapy_cap[0][IP][TCP].sport
+                    dport = scapy_cap[0][IP][TCP].dport
+                    snd = scapy_cap[1].time - scapy_cap[0].time
+                    cnd = scapy_cap[2].time - scapy_cap[1].time
+
+                    fit_key = str(dip)+ ' '+str(dport)
+                    if fit_key not in server_dst.keys():
+                        server_dst[fit_key]=[]
+                    server_dst[fit_key].append("{} {} <---> {} {}: art:{} {}".format(sip,sport,dip,dport,snd,cnd))
+        except Exception as e:
+            print("{} Issued TCP session".format(one_pcap))
+        else:
+            pass
+        finally:
+            pass
+
+    for app_dst in server_dst.keys():
+        for session in server_dst[app_dst]:
+            print(session)
+
+
+
 
 # ###### split flow first ###########
-# func1()
+# flow_parse("./",
+#            "vm5.pcap")
+
+func1()
+art_measure("/Users/sish/Desktop/APM-toolkit/sish/")
 # ####################################
 
 ###### update flow infomation#######
-application_parse()
-update_application_info()
+# application_parse()
+# update_application_info()
 ####################################
 
 # ###### parse one flow ##############
@@ -218,7 +258,7 @@ update_application_info()
 #     main()
 
 # if re.match(".*\.pcap", one_pcap) != None:
-#     ≈
+#
 #     import pdb
 #     pdb.set_trace()
 #     scapy_cap = rdpcap(dir_location + one_pcap)
