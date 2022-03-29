@@ -1,0 +1,45 @@
+base_url:
+
+offset_url:
+  cli:
+    mount_point: '/template/device/config/vbond'
+    method: 'get'
+    # payload:
+  dash_status:
+    mount_point: '/device/action/status/tasks'
+    method: 'get'
+
+  test:
+    mount_point: '/device/action/status/tasks'
+    method: 'get'
+    method_input: {}
+    trigger:
+      - method: 'start_nwpi_trace'
+        input_dict:
+            trace_name: 'test'
+            trace_durarion: 60
+      - method: 'start_trex_traffic'
+        input_dict:
+            trace_name: 'test'
+            trace_durarion: 60
+      
+  start_nwpi:
+    mount_point: '/stream/device/nwpi/trace/start'
+    method: 'post'
+    post_payload:
+      source_site: "500"
+      vpn_id: "1"
+      duration: "60"
+      src_pfx: "17.0.0.0/8"
+      art_vis: "true"
+      trace_name: "test_sish"
+    method_input: {}
+    # trigger:
+    #   - method: 'start_nwpi_trace'
+    #     input_dict:
+    #         trace_name: 'test'
+    #         trace_durarion: 60
+    #   - method: 'start_trex_traffic'
+    #     input_dict:
+    #         trace_name: 'test'
+    #         trace_durarion: 60

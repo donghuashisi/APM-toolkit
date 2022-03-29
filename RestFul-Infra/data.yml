@@ -1,0 +1,75 @@
+data:
+    agg_id: 1
+    app_group: other
+    app_name: ssl
+    client_ip: N/A
+    device_trace_id: 1008
+    domain_name: Unknown
+    last_update_time: 1648450980213
+    path_list:
+    - downstream_hop_list:
+      - art: N/A
+        aysmmetry_flows: 0
+        fif_not_classified_flows: 0
+        hop_index: 1
+        inspected_flows: 0
+        interval_active_flows: 0
+        interval_fin_flows: 0
+        jitter: '2147483647'
+        latency: '2147483647'
+        local_color: Service LAN
+        local_drop_cause_num: 0
+        local_drop_rate: '0.00'
+        local_edge: vm5 (Gi5)
+        local_system_ip: 172.16.255.15
+        path_changed_flows: 0
+        policy_bypassed_flows: 0
+        qos_congested_flows: 0
+        remote_color: N/A
+        remote_drop_cause_num: 0
+        remote_drop_rate: '2147483647.00'
+        remote_edge: LAN Side
+        remote_system_ip: 0.0.0.0
+        sla_violated_flows: 0
+        total_bytes: '0'
+        total_fin_flows: 0
+        total_packets: '0'
+        wan_aysmmetry_flows: 0
+        wan_drop_rate: '2147483647.00'
+        wan_drop_str: N/A
+      path_id: 1
+      upstream_hop_list:
+      - art: 'vm5: N/A'
+        aysmmetry_flows: 0
+        fif_not_classified_flows: 0
+        hop_index: 1
+        inspected_flows: 0
+        interval_active_flows: 0
+        interval_fin_flows: 0
+        jitter: '2147483647'
+        latency: '2147483647'
+        local_color: COLOR_LTE (NAT_DIA)
+        local_drop_cause_num: 0
+        local_drop_rate: '0.00'
+        local_edge: vm5
+        local_system_ip: 172.16.255.15
+        path_changed_flows: 0
+        policy_bypassed_flows: 0
+        qos_congested_flows: 0
+        remote_color: N/A
+        remote_drop_cause_num: 0
+        remote_drop_rate: '2147483647.00'
+        remote_edge: Internet
+        remote_system_ip: N/A
+        sla_violated_flows: 0
+        total_bytes: '0'
+        total_fin_flows: 0
+        total_packets: '0'
+        wan_aysmmetry_flows: 0
+        wan_drop_rate: '2147483647.00'
+        wan_drop_str: N/A
+    start_timestamp: 1648450980213
+  entry_time: 1648450957384
+  tenant: default
+  trace-id: 1008
+  type: agg-flow-data

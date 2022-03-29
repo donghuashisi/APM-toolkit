@@ -1,0 +1,434 @@
+data:
+  app_group: other
+  app_name: http
+  # appqoe_diverted: false
+  art: 'vm5: 47/33'
+  # asymmetry_detected: false
+  # big_drop: false
+  # device_trace_id: 480
+  domain: []
+  domain_name: Unknown
+  domain_src: no data
+  # downstream_device_list:
+  #   - device_name: vm6
+  #     device_system_ip: 172.16.255.16
+  #     # down_actual_path:
+  #     #   localColor: LTE
+  #     #   nextHopType: NEXTHOP_SDWAN_SESSION
+  #     #   outputInterface: Loopback1
+  #     #   remoteColor: RED
+  #     #   remoteSystemIp: 172.16.255.11
+  #     # down_fwd_decision: routing
+  #     # ingress_pre_invalid: true
+  #     # localColor: LTE
+  #     # packet_list:
+  #     #   - 21293
+  #     # remoteColor: INVALID
+  #     # up_actual_path:
+  #     #   nextHopType: NEXTHOP_SERVICE_LAN
+  #     #   outputInterface: GigabitEthernet5
+  #     # up_fwd_decision: routing
+  #   - device_name: vm1
+  #     device_system_ip: 172.16.255.11
+  #     # down_actual_path:
+  #     #   localColor: GOLD
+  #     #   nextHopType: NEXTHOP_SDWAN_SESSION
+  #     #   outputInterface: Loopback3
+  #     #   remoteColor: LTE
+  #     #   remoteSystemIp: 172.16.255.15
+  #     # down_fwd_decision: routing
+  #     # localColor: GOLD
+  #     # packet_list:
+  #     # - 11838
+  #     # remoteColor: RED
+  #     # up_actual_path:
+  #     #   localColor: RED
+  #     #   nextHopType: NEXTHOP_SDWAN_SESSION
+  #     #   outputInterface: Loopback4
+  #     #   remoteColor: LTE
+  #     #   remoteSystemIp: 172.16.255.16
+  #     # up_fwd_decision: routing
+  #   - device_name: vm5
+  #     device_system_ip: 172.16.255.15
+  #     # down_actual_path:
+  #     #   nextHopType: NEXTHOP_SERVICE_LAN
+  #     #   outputInterface: GigabitEthernet5
+  #     # down_fwd_decision: routing
+  #     # egress_next_invalid: true
+  #     # localColor: INVALID
+  #     # packet_list:
+  #     # - 26008
+  #     # - 26010
+  #     # - 26011
+  #     # remoteColor: LTE
+  #     # up_actual_path:
+  #     #   localColor: LTE
+  #     #   nextHopType: NEXTHOP_SDWAN_SESSION
+  #     #   outputInterface: GigabitEthernet1
+  #     #   remoteColor: COLOR_3G
+  #     #   remoteSystemIp: 172.16.255.11
+  #     # up_fwd_decision: routing
+  #   - device_name: N/A
+  #     device_system_ip: N/A
+  #   down_actual_path: {}
+  #   down_fwd_decision: unknown
+  #   localColor: N/A
+  #   packet_list: []
+  #   remoteColor: N/A
+  #   up_actual_path: {}
+  #   up_fwd_decision: unknown
+  # downstream_dscp: DEFAULT
+  # downstream_hop_list:
+  #   - appqoe_diverted: false
+  #     art: N/A
+  #     # asymmetry_detected: false
+  #     # big_drop: false
+  #     # dpi_policy_used: false
+  #     # fif_dpi_not_classified: false
+  #     # flow_id: 12
+  #     hop_index: 0
+  #     # jitter: '0'
+  #     # latency: '1024'
+  #     # local_color: LTE
+  #     # local_drop_cause_num: 0
+  #     local_drop_rate: '0.00'
+  #     # local_edge: (Gi5) vm6
+  #     # local_system_ip: 172.16.255.16
+  #     # nat_translated: true
+  #     # path_changed: false
+  #     # policy_bypassed: false
+  #     # q_d_avg_pkts: 0
+  #     # q_d_max_pkts: 0
+  #     # q_d_min_pkts: 0
+  #     # q_id: 0
+  #     # q_lim_pkts: 0
+  #     # qos_congested: false
+  #     # remote_color: RED
+  #     # remote_drop_cause_num: 0
+  #     remote_drop_rate: '0.00'
+  #     # remote_edge: vm1
+  #     # remote_system_ip: 172.16.255.11
+  #     # sla_violated: false
+  #     # tcp_flow_reset: false
+  #     # total_bytes: '437'
+  #     # total_packets: '5'
+  #     # utd_diverted: false
+  #     # wan_color_asym: true
+  #     # wan_drop_rate: '0.00'
+  #     # wan_drop_str: '0.00'
+  #   - appqoe_diverted: false
+  #     art: N/A
+  #     # asymmetry_detected: false
+  #     # big_drop: false
+  #     # dpi_policy_used: false
+  #     # fif_dpi_not_classified: false
+  #     # flow_id: 12
+  #     hop_index: 1
+  #     # jitter: '0'
+  #     # latency: '1024'
+  #     # local_color: GOLD
+  #     # local_drop_cause_num: 0
+  #     local_drop_rate: '0.00'
+  #     # local_edge: vm1
+  #     # local_system_ip: 172.16.255.11
+  #     # nat_translated: true
+  #     # path_changed: false
+  #     # policy_bypassed: false
+  #     # q_d_avg_pkts: 0
+  #     # q_d_max_pkts: 0
+  #     # q_d_min_pkts: 0
+  #     # q_id: 0
+  #     # q_lim_pkts: 0
+  #     # qos_congested: false
+  #     # remote_color: LTE
+  #     # remote_drop_cause_num: 0
+  #     remote_drop_rate: '0.00'
+  #     # remote_edge: vm5
+  #     # remote_system_ip: 172.16.255.15
+  #     # sla_violated: false
+  #     # tcp_flow_reset: false
+  #     # total_bytes: '657'
+  #     # total_packets: '5'
+  #     # utd_diverted: false
+  #     # wan_color_asym: true
+  #     # wan_drop_rate: '0.00'
+  #     # wan_drop_str: '0.00'
+  #   - appqoe_diverted: false
+  #     art: N/A
+  #     # asymmetry_detected: false
+  #     # big_drop: false
+  #     # dpi_policy_used: false
+  #     # fif_dpi_not_classified: true
+  #     # flow_id: 12
+  #     hop_index: 2
+  #     # jitter: '2147483647'
+  #     # latency: '2147483647'
+  #     # local_color: Service LAN
+  #     # local_drop_cause_num: 0
+  #     local_drop_rate: '0.00'
+  #     # local_edge: vm5 (Gi5)
+  #     # local_system_ip: 172.16.255.15
+  #     # nat_translated: false
+  #     # path_changed: false
+  #     # policy_bypassed: false
+  #     # q_d_avg_pkts: 0
+  #     # q_d_max_pkts: 0
+  #     # q_d_min_pkts: 0
+  #     # q_id: 0
+  #     # q_lim_pkts: 0
+  #     # qos_congested: false
+  #     # remote_color: N/A
+  #     # remote_drop_cause_num: 0
+  #     remote_drop_rate: '0.00'
+  #     # remote_edge: LAN Side
+  #     # remote_system_ip: 0.0.0.0
+  #     # sla_violated: false
+  #     # tcp_flow_reset: false
+  #     # total_bytes: '657'
+  #     total_packets: '5'
+  #     # utd_diverted: false
+  #     # wan_color_asym: false
+  #     # wan_drop_rate: '0.00'
+  #     # wan_drop_str: N/A
+  # dpi_policy_used: false
+  dst_ip: 48.1.0.5
+  dst_port: 80
+  # flow_id: 12
+  # flow_key: 12,16.1.0.1:41669->48.1.0.5:80,TCP
+  # flow_moved: false
+  # flow_readout:
+  #   application: http
+  #   domain: []
+  #   downstream: []
+  #   flowLastUpdateTime: '1647998269844'
+  #   flowStartTime: '1647998269844'
+  #   totalFlowNumCounted: true
+  #   totalFlowNumLast15MinsCounted: true
+  #   upstream:
+  #   - dpiDoneApp: N/A
+  #     dpiDonePacketNbarState: N/A
+  #     dpiDonePktNum: N/A
+  #     dpiDoneTimestamp: 0
+  #     dpiOngoingApp: N/A
+  #     dpiOngoingPacketNbarState: N/A
+  #     dpiOngoingPktNum: N/A
+  #     dpiOngoingTimestamp: 0
+  #     event: FIF_DPI_NOT_CLASSIFIED
+  #     firstPacketApp: N/A
+  #     firstPacketNbarState: N/A
+  #     firstPacketTimestamp: 0
+  #     hopWithColor: (Gi5) vm5:LTE-->vm1:COLOR_3G
+  #     hostname: (Gi5) vm5
+  #     interface: N/A
+  #     policyName: N/A
+  #     policyType: N/A
+  #     sequence: N/A
+  #     timestamp: 1647998263808
+  #     vpn: N/A
+  # nat_translated: true
+  # path_changed: false
+  # policy_bypassed: false
+  protocol: TCP
+  # received_timestamp: 1647998263808
+  # sla_violated: false
+  # sla_violated_bfd: false
+  # src_ip: 16.1.0.1
+  # src_port: 41669
+  # start_device: 172.16.255.15
+  # start_timestamp: 1647998263808
+  # tcp_flow_reset: false
+  # timestamp: 1647998091992
+  upstream_device_list:
+    - device_name: vm5
+      device_system_ip: 172.16.255.15
+      # down_actual_path:
+      #   nextHopType: NEXTHOP_SERVICE_LAN
+      #   outputInterface: GigabitEthernet5
+      # down_fwd_decision: routing
+      # ingress_pre_invalid: true
+      # localColor: LTE
+      # packet_list:
+      #   - 26007
+      #   - 26009
+      #   - 26012
+      # remoteColor: INVALID
+      # up_actual_path:
+      #   localColor: LTE
+      #   nextHopType: NEXTHOP_SDWAN_SESSION
+      #   outputInterface: GigabitEthernet1
+      #   remoteColor: COLOR_3G
+      #   remoteSystemIp: 172.16.255.11
+      # up_fwd_decision: routing
+    - device_name: vm1
+      device_system_ip: 172.16.255.11
+      # down_actual_path:
+      #   localColor: GOLD
+      #   nextHopType: NEXTHOP_SDWAN_SESSION
+      #   outputInterface: Loopback3
+      #   remoteColor: LTE
+      #   remoteSystemIp: 172.16.255.15
+      # down_fwd_decision: routing
+      # localColor: RED
+      # packet_list:
+      # - 11837
+      # remoteColor: COLOR_3G
+      # up_actual_path:
+      #   localColor: RED
+      #   nextHopType: NEXTHOP_SDWAN_SESSION
+      #   outputInterface: Loopback4
+      #   remoteColor: LTE
+      #   remoteSystemIp: 172.16.255.16
+      # up_fwd_decision: routing
+    - device_name: vm6
+      device_system_ip: 172.16.255.16
+      # down_actual_path:
+      #   localColor: LTE
+      #   nextHopType: NEXTHOP_SDWAN_SESSION
+      #   outputInterface: Loopback1
+      #   remoteColor: RED
+      #   remoteSystemIp: 172.16.255.11
+      # down_fwd_decision: routing
+      # egress_next_invalid: true
+      # localColor: INVALID
+      # packet_list:
+      # - 21292
+      # remoteColor: LTE
+      # up_actual_path:
+      #   nextHopType: NEXTHOP_SERVICE_LAN
+      #   outputInterface: GigabitEthernet5
+      # up_fwd_decision: routing
+    - device_name: N/A
+      device_system_ip: N/A
+  #     down_actual_path: {}
+  #     down_fwd_decision: unknown
+  #     localColor: N/A
+  #     packet_list: []
+  #     remoteColor: N/A
+  #     up_actual_path: {}
+  #     up_fwd_decision: unknown
+  # upstream_dscp: DEFAULT
+  upstream_hop_list:
+    - appqoe_diverted: false
+      art: 'vm5: 50/50'
+      # asymmetry_detected: false
+      # big_drop: false
+      # dpi_policy_used: false
+      # fif_dpi_not_classified: true
+      # flow_id: 12
+      hop_index: 0
+      # jitter: '2147483647'
+      # latency: '1024'
+      # local_color: LTE
+      # local_drop_cause_num: 0
+      # local_drop_rate: '0.00'
+      # local_edge: (Gi5) vm5
+      # local_system_ip: 172.16.255.15
+      # nat_translated: false
+      # path_changed: false
+      # policy_bypassed: false
+      # q_d_avg_pkts: 0
+      # q_d_max_pkts: 0
+      # q_d_min_pkts: 0
+      # q_id: 0
+      # q_lim_pkts: 0
+      # qos_congested: false
+      # remote_color: COLOR_3G
+      # remote_drop_cause_num: 0
+      # remote_drop_rate: '0.00'
+      # remote_edge: vm1
+      # remote_system_ip: 172.16.255.11
+      # sla_violated: false
+      # tcp_flow_reset: false
+      # total_bytes: '403'
+      total_packets: '5'
+      # utd_diverted: false
+      # wan_color_asym: true
+      # wan_drop_rate: '0.00'
+      # wan_drop_str: '0.00'
+    - appqoe_diverted: false
+      art: 'vm1: 50/50'
+      # asymmetry_detected: false
+      # big_drop: false
+      # dpi_policy_used: false
+      # fif_dpi_not_classified: false
+      # flow_id: 12
+      hop_index: 1
+      # jitter: '2147483647'
+      # latency: '1024'
+      # local_color: RED
+      # local_drop_cause_num: 0
+      # local_drop_rate: '0.00'
+      # local_edge: vm1
+      # local_system_ip: 172.16.255.11
+      # nat_translated: false
+      # path_changed: false
+      # policy_bypassed: false
+      # q_d_avg_pkts: 0
+      # q_d_max_pkts: 0
+      # q_d_min_pkts: 0
+      # q_id: 0
+      # q_lim_pkts: 0
+      # qos_congested: false
+      # remote_color: LTE
+      # remote_drop_cause_num: 0
+      # remote_drop_rate: '0.00'
+      # remote_edge: vm6
+      # remote_system_ip: 172.16.255.16
+      # sla_violated: false
+      # tcp_flow_reset: false
+      # total_bytes: '623'
+      total_packets: '5'
+      # utd_diverted: false
+      # wan_color_asym: false
+      # wan_drop_rate: '0.00'
+      # wan_drop_str: '0.00'
+    - appqoe_diverted: false
+      art: 'vm6: 50/50'
+      # asymmetry_detected: false
+      # big_drop: false
+      # dpi_policy_used: false
+      # fif_dpi_not_classified: false
+      # flow_id: 12
+      hop_index: 2
+      # jitter: '2147483647'
+      # latency: '2147483647'
+      # local_color: Service LAN
+      # local_drop_cause_num: 0
+      # local_drop_rate: '0.00'
+      # local_edge: vm6 (Gi5)
+      # local_system_ip: 172.16.255.16
+      # nat_translated: false
+      # path_changed: false
+      # policy_bypassed: false
+      # q_d_avg_pkts: 0
+      # q_d_max_pkts: 0
+      # q_d_min_pkts: 0
+      # q_id: 0
+      # q_lim_pkts: 0
+      # qos_congested: false
+      # remote_color: N/A
+      # remote_drop_cause_num: 0
+      # remote_drop_rate: '0.00'
+      # remote_edge: LAN Side
+      # remote_system_ip: 0.0.0.0
+      # sla_violated: false
+      # tcp_flow_reset: false
+      # total_bytes: '623'
+      total_packets: '5'
+      # utd_diverted: false
+      # wan_color_asym: false
+      # wan_drop_rate: '0.00'
+      # wan_drop_str: N/A
+  # utd_diverted: false
+  # wan_color_asym: true
+# entry_time: 1647998091992
+# tenant: default
+# trace-id: 480
+# type: hops-of-flow
+smart_engine:
+  art: 
+    worker: art_worker
+    var:
+      diff: 0.5
+
+

@@ -1,0 +1,10 @@
+mapping:
+  # - url: 'cli'
+  #   feed_data: 'demo'
+  # - url: 'dash_status'
+  #   feed_data: 'dash_status'
+  # - url: 'test'
+  #   feed_data: 'dash_status'
+
+  - url: 'start_nwpi'
+    feed_data: 'dash_status'
