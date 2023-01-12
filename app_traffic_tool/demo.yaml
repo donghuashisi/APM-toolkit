@@ -1,0 +1,201 @@
+base:
+  servers:
+    - talk_point:
+        to_bridge: 'virbr25'
+        gw: '10.20.25.16'
+        ip: '10.20.25.110/24'
+      traffic:
+        - name: 's1'
+          ip: '10.20.25.110'
+          ssl: True
+          server_name: 'www.sharepoint.com'
+          flow_mode: 'sym'
+          no_print: True
+  clients:
+    - talk_point:
+        to_bridge: 'virbr24'
+        gw: '10.20.24.15'
+        ip: '10.20.24.110/24'
+      traffic:
+        - s_name: 's1'
+          no_print: True
+          client_sum: 100000
+          client_delay: 1
+          client_concur: 5
+http:
+  servers:
+    - talk_point:
+        to_bridge: 'virbr25'
+        gw: '10.20.25.16'
+        ip: '10.20.25.110/24'
+      traffic:
+        - name: 's1'
+          ip: '10.20.25.110'
+          server_port: 80
+          flow_mode: 'baseHttp'
+          no_print: True
+  clients:
+    - talk_point:
+        to_bridge: 'virbr24'
+        gw: '10.20.24.15'
+        ip: '10.20.24.110/24'
+      traffic:
+        - s_name: 's1'
+          no_print: True
+          client_sum: 100000
+          client_delay: 1
+          client_concur: 5
+# Define you own flow pattern and use it by API flow_db && flow_mode
+# How to define your own pattern, refer ./app_traffic_tool/flow_db/pattern_default.json
+test_customer_pattern:
+  servers:
+    - talk_point:
+        to_bridge: 'virbr25'
+        gw: '10.20.25.16'
+        ip: '10.20.25.110/24'
+      traffic:
+        - name: 's1'
+          ip: '10.20.25.110'
+          flow_mode: 'TestMode1'
+          flow_db: 'pattern_default.json'
+          no_print: True
+  clients:
+    - talk_point:
+        to_bridge: 'virbr24'
+        gw: '10.20.24.15'
+        ip: '10.20.24.110/24'
+      traffic:
+        - s_name: 's1'
+          no_print: True
+          client_sum: 1
+# Control the client connection rate, controlled by client_cps (connection per second)
+# client_sum is the total connection number
+# In this example, client will create 5 connection per second, stopped after total 10 connection finished
+client_cps_control:
+  servers:
+    - talk_point:
+        to_bridge: 'virbr25'
+        gw: '10.20.25.16'
+        ip: '10.20.25.110/24'
+      traffic:
+        - name: 's1'
+          ip: '10.20.25.110'
+          flow_mode: 'baseHttp'
+          no_print: True
+  clients:
+    - talk_point:
+        to_bridge: 'virbr24'
+        gw: '10.20.24.15'
+        ip: '10.20.24.110/24'
+      traffic:
+        - s_name: 's1'
+          no_print: True
+          client_sum: 10
+          client_cps: 5
+# In this example, there are two server (s1 and s2), and client request both services from s1 and s2
+multi_servers:
+  servers:
+    - talk_point:
+        to_bridge: 'virbr25'
+        gw: '10.20.25.16'
+        ip: '10.20.25.110/24'
+      traffic:
+        - name: 's1'
+          ip: '10.20.25.110'
+          flow_mode: 'baseHttp'
+          server_port: 80
+          no_print: True
+    - talk_point:
+        to_bridge: 'virbr25'
+        gw: '10.20.25.16'
+        ip: '10.20.25.111/24'
+      traffic:
+        - name: 's2'
+          ip: '10.20.25.111'
+          ssl: True
+          server_name: 'www.sharepoint.com'
+          flow_mode: 'sym'
+          no_print: True
+  clients:
+    - talk_point:
+        to_bridge: 'virbr24'
+        gw: '10.20.24.15'
+        ip: '10.20.24.110/24'
+      traffic:
+        - s_name: 's1'
+          no_print: True
+          client_sum: 10
+          client_cps: 5
+        - s_name: 's2'
+          no_print: True
+          client_sum: 2
+          client_cps: 1
+v6:
+  servers:
+    - talk_point:
+        to_bridge: 'virbr25'
+        ipv6: '2001::3/64'
+        gwv6: '2001::1'
+      traffic:
+        - name: 's1'
+          ip: '2001::3'
+          ssl: True
+          server_name: 'www.sharepoint.com'
+          flow_mode: 'sym'
+          no_print: True
+  clients:
+    - talk_point:
+        to_bridge: 'virbr24'
+        ipv6: '2002::3/64'
+        gwv6: '2002::1'
+      traffic:
+        - s_name: 's1'
+          no_print: True
+          client_sum: 100000
+          client_delay: 1
+          client_concur: 5
+httpv6:
+  servers:
+    - talk_point:
+        to_bridge: 'virbr25'
+        ipv6: '2001::3/64'
+        gwv6: '2001::1'
+      traffic:
+        - name: 's1'
+          ip: '2001::3'
+          server_port: 80
+          flow_mode: 'baseHttp'
+          no_print: True
+  clients:
+    - talk_point:
+        to_bridge: 'virbr24'
+        ipv6: '2002::3/64'
+        gwv6: '2002::1'
+      traffic:
+        - s_name: 's1'
+          no_print: True
+          client_sum: 10
+          client_cps: 5
+udp:
+  servers:
+    - talk_point:
+        to_bridge: 'virbr25'
+        gw: '10.20.25.16'
+        ip: '10.20.25.110/24'
+      traffic:
+        - name: 's1'
+          ip: '10.20.25.110'
+          server_port: 53
+          protocol: 'udp'
+          flow_mode: 'udp_test'
+          no_print: True
+  clients:
+    - talk_point:
+        to_bridge: 'virbr24'
+        gw: '10.20.24.15'
+        ip: '10.20.24.110/24'
+      traffic:
+        - s_name: 's1'
+          no_print: True
+          client_sum: 10
+          client_cps: 5
